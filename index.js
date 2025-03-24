@@ -76,52 +76,60 @@ const arrayCartas = [
 document.addEventListener('DOMContentLoaded', function() {
     const repartirButton = document.querySelector('.repartir');
     const otraCartaButton = document.querySelector('.otra');
-    const carteraContainer = document.querySelector('#cartera');
+    const numCartasInput = document.querySelector('#numCartas');
+    const tapeteContainer = document.querySelector('.tapete');
     const cartaSeleccionadaContainer = document.querySelector('.carta-seleccionada');
-    const numeroCartesInput = document.querySelector('#numero-cartes');
-    let cartaSeleccionada = null; 
-}
+    let cartas = []; 
 
-function generarCartes(numeroCartes) {
-    carteraContainer.innerHTML = ''; 
-    for (let i = 0; i < numeroCartes; i++) {
-        const carta = document.createElement('div');
-        carta.classList.add('carta');
-        carta.textContent = `Carta ${i + 1}`;
-        carta.addEventListener('click', function() {
-            seleccionarCarta(carta);
-        });
-        carteraContainer.appendChild(carta);
+    function generarCartas(numeroCartas) {
+        tapeteContainer.innerHTML = '';  
+        cartas = []; 
+
+        for (let i = 0; i < numeroCartas; i++) {
+            const carta = document.createElement('div');
+            carta.classList.add('carta');
+            carta.innerHTML = `<img src="imagenes/${i}_blue.png" alt="Carta ${i + 1}">`;  
+            carta.addEventListener('click', function() {
+                seleccionarCarta(carta);
+            });
+            tapeteContainer.appendChild(carta);
+            cartas.push(carta); 
+        }
     }
-}
 
-function seleccionarCarta(carta) {
-    if (cartaSeleccionada !== null) {
-        cartaSeleccionada.classList.remove('seleccionada');
+    function seleccionarCarta(carta) {
+        // Eliminar la clase "seleccionada" de la carta previamente seleccionada
+        const cartaSeleccionada = document.querySelector('.carta.seleccionada');
+        if (cartaSeleccionada) {
+            cartaSeleccionada.classList.remove('seleccionada');
+        }
+
+        carta.classList.add('seleccionada');
+
+        cartaSeleccionadaContainer.innerHTML = '<h3>Carta seleccionada</h3>';
+        cartaSeleccionadaContainer.appendChild(carta.cloneNode(true));
     }
-    carta.classList.add('seleccionada');
-    cartaSeleccionada = carta;
-    cartaSeleccionadaContainer.textContent = `Carta seleccionada: ${carta.textContent}`;
-}
 
-numeroCartes.addEventListener('input', function() {
-    console.log(`Número de cartes: ${numeroCartesInput.value}`);
-});
 
-repartirButton.addEventListener('click', function() {
-    console.log(`S'ha fet clic al botó "Repartir"`);
-    console.log(`Número de cartes per repartir: ${numeroCartesInput.value}`);
-    const numeroCartes = parseInt(numeroCartesInput.value, 10);
-    if (numeroCartes > 0) {
-        generarCartes(numeroCartes);
-    }
-});
+    numCartasInput.addEventListener('input', function() {
+        console.log(`Número de cartas: ${numCartasInput.value}`);
+    });
 
-otraCartaButton.addEventListener('click', function() {
-    let numeroCartes = parseInt(numeroCartesInput.value, 10);
-    numeroCartes += 1;
-    numeroCartesInput.value = numeroCartes; 
-    console.log(`Afegint una carta més. Total cartes: ${numeroCartes}`);
-    generarCartes(numeroCartes); 
-});
+    repartirButton.addEventListener('click', function() {
+        console.log(`S'ha fet clic al botó "Repartir"`);
+        const numeroCartas = parseInt(numCartasInput.value, 10);
+        if (numeroCartas > 0) {
+            generarCartas(numeroCartas);
+        } else {
+            console.log('Por favor, ingresa un número válido de cartas.');
+        }
+    });
+
+    otraCartaButton.addEventListener('click', function() {
+        let numeroCartas = parseInt(numCartasInput.value, 10);
+        numeroCartas += 1;
+        numCartasInput.value = numeroCartas;  
+        console.log(`Afegint una carta més. Total cartes: ${numeroCartas}`);
+        generarCartas(numeroCartas);  
+    });
 });
