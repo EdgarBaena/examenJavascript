@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function generarCartas(numeroCartas) {
         tapeteContainer.innerHTML = '';  
-        cartas = []; 
+        cartas = [5]; 
 
         for (let i = 0; i < numeroCartas; i++) {
             const carta = document.createElement('div');
