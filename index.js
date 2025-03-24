@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
         for (let i = 0; i < numeroCartas; i++) {
             const carta = document.createElement('div');
             carta.classList.add('carta');
-            carta.innerHTML = `<img src="imagenes/${i}_blue.png" alt="Carta ${i + 1}">`;  
+            carta.innerHTML = `<img src="imagenes" alt="Carta ${i + 1}">`;  
             carta.addEventListener('click', function() {
                 seleccionarCarta(carta);
             });
