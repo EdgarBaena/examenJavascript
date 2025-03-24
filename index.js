@@ -98,7 +98,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function seleccionarCarta(carta) {
-        // Eliminar la clase "seleccionada" de la carta previamente seleccionada
         const cartaSeleccionada = document.querySelector('.carta.seleccionada');
         if (cartaSeleccionada) {
             cartaSeleccionada.classList.remove('seleccionada');
