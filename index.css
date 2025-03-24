@@ -1,0 +1,60 @@
+body{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #186d3e;
+    font-family: sans-serif;
+    color: whitesmoke;
+  }
+  .carta{
+    width: fit-content;
+    height: fit-content;
+  } 
+  
+  
+  .tapete{
+    height: 100px;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  .carta-seleccionada{
+    margin-top: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .seleccionada{
+    transform: scale(1.2);
+    
+  }
+  input{
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px; 
+    background-color: beige;
+    font-size: larger;
+    text-align: center;
+    width: 20px;
+  }
+  button{
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px; 
+    background-color: #333;
+    color: white;
+    font-size: larger;
+  }
+  .controles{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
