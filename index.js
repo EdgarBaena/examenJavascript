@@ -107,3 +107,21 @@ function seleccionarCarta(carta) {
 numeroCartes.addEventListener('input', function() {
     console.log(`Número de cartes: ${numeroCartesInput.value}`);
 });
+
+repartirButton.addEventListener('click', function() {
+    console.log(`S'ha fet clic al botó "Repartir"`);
+    console.log(`Número de cartes per repartir: ${numeroCartesInput.value}`);
+    const numeroCartes = parseInt(numeroCartesInput.value, 10);
+    if (numeroCartes > 0) {
+        generarCartes(numeroCartes);
+    }
+});
+
+otraCartaButton.addEventListener('click', function() {
+    let numeroCartes = parseInt(numeroCartesInput.value, 10);
+    numeroCartes += 1;
+    numeroCartesInput.value = numeroCartes; 
+    console.log(`Afegint una carta més. Total cartes: ${numeroCartes}`);
+    generarCartes(numeroCartes); 
+});
+});
