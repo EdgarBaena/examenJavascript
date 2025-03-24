@@ -72,3 +72,38 @@ const arrayCartas = [
     link: "4_blue.png",
   },
 ];
+
+document.addEventListener('DOMContentLoaded', function() {
+    const repartirButton = document.querySelector('.repartir');
+    const otraCartaButton = document.querySelector('.otra');
+    const carteraContainer = document.querySelector('#cartera');
+    const cartaSeleccionadaContainer = document.querySelector('.carta-seleccionada');
+    const numeroCartesInput = document.querySelector('#numero-cartes');
+    let cartaSeleccionada = null; 
+}
+
+function generarCartes(numeroCartes) {
+    carteraContainer.innerHTML = ''; 
+    for (let i = 0; i < numeroCartes; i++) {
+        const carta = document.createElement('div');
+        carta.classList.add('carta');
+        carta.textContent = `Carta ${i + 1}`;
+        carta.addEventListener('click', function() {
+            seleccionarCarta(carta);
+        });
+        carteraContainer.appendChild(carta);
+    }
+}
+
+function seleccionarCarta(carta) {
+    if (cartaSeleccionada !== null) {
+        cartaSeleccionada.classList.remove('seleccionada');
+    }
+    carta.classList.add('seleccionada');
+    cartaSeleccionada = carta;
+    cartaSeleccionadaContainer.textContent = `Carta seleccionada: ${carta.textContent}`;
+}
+
+numeroCartes.addEventListener('input', function() {
+    console.log(`Número de cartes: ${numeroCartesInput.value}`);
+});
